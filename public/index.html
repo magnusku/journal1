@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Journal1</title>
+
+        <style>
+            .page-content {
+                width: 50vw;
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="page-content">
+            <form action="/api/journal/import" 
+                  method="POST"
+                  enctype="multipart/form-data">
+
+                <label for="fileinput"> Select file: </label>
+                <input id="fileinput" type="file" name="csvfile" value="upload!"/>
+                <button type="submit">Import</button>
+            </form>
+        </div>
+    </body>
+</html>

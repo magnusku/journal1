@@ -1,0 +1,29 @@
+{
+  "name": "journal1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js --production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/magnusku/journal1.git"
+  },
+  "author": "Magnus Kurtto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/magnusku/journal1/issues"
+  },
+  "homepage": "https://github.com/magnusku/journal1#readme",
+  "dependencies": {
+    "csvtojson": "^2.0.10",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "pg": "^8.6.0"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0"
+  }
+}
