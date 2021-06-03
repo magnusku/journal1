@@ -8,45 +8,31 @@
     </form>
 </template>
 
-<script>
+<script setup>
 import { ref, defineComponent, onMounted } from "vue";
 
-export default defineComponent({
-    name: "FileImport",
-    setup(props, context) {
-        const importForm = ref();
+const importForm = ref();
 
-        async function submitForm() {
-            const formData = new FormData(document.forms.importForm);
-            
+async function submitForm() {
+    const formData = new FormData(document.forms.importForm);
+    
+    try {
+        const response = await fetch("/api/journal/import", {
+            method: "POST",
+            body: formData
+        });
 
-            if (true) {
-                try {
-                    const response = await fetch("/api/journal/import", {
-                        method: "POST",
-                        body: formData
-                    });
+        console.log(response);
 
-                    if(response.ok) {
-                        alert("Upload successful");
-                    } else {
-                        alert("Failed to upload");
-                    }
-                } catch(e) {
-                    console.error(e);
-                }
-            } else {
-                console.log("No file was selected");
-            }
+        if(response.ok) {
+            alert("Upload successful");
+        } else {
+            alert("Failed to upload");
         }
-
-        return {
-            importForm,
-            submitForm
-        }
+    } catch(e) {
+        console.error(e);
     }
-});
-
+}
 
 </script>
 

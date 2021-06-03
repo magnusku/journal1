@@ -37,16 +37,11 @@
 
 </template>
 
-<script>
+<script setup>
   import { defineComponent, onBeforeMount, ref } from "vue";
   import { useFilter } from "../composition/useFilter.js";
   import FileImport from "./FileImport.vue";
-
-  export default defineComponent({
-    components: {
-      FileImport
-    },
-    setup() {      
+   
       const register = ref([]);
 
       async function getList() {
@@ -60,15 +55,6 @@
       });
 
       const {textFilter, filteredList} = useFilter(register);
-
-      return {
-        textFilter,
-        filteredList
-      };
-    }
-  });
-
-
 </script>
 
 <style scoped>

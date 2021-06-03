@@ -7,21 +7,23 @@ module.exports = {
         console.log("DO IMPORT");
 
         if (!request.files || Object.keys(request.files).length === 0) {
-            console.log("file exists");
             return response.status(400).send("No files where uploaded");
         }
 
         const file = request.files.csvfile;
 
-        console.log(file);
+        if (!file.name.endsWith(".csv")) {
+            return response.status(400).send("Only csv files are supported");
+        }
 
         csv({
             delimiter: ";"
         })
+        
         .fromStream(Readable.from(file.data))
-        .subscribe(async csvRow =>  {
+        .subscribe( csvRow =>  {
             try {
-                await db.query(`INSERT INTO registry (
+                db.query(`INSERT INTO registry (
                     personalNumber, 
                     firstName, 
                     lastName, 
@@ -35,18 +37,11 @@ module.exports = {
                 lastName = $3,
                 birthDay = $4,
                 address = $5`, Object.values(csvRow));
-
-                response.status(200);
             } catch(e) {
                 console.error(e.message);
             }
-        }, error => {
-            console.error(error.stack);
-            response.status(error.status);
-            return;
-        });
+        }).on("done", error => error ? response.status(error.status) : response.status(200));
     },
-
 
     getJournals: async (request, response) => {
         console.log("GET JOURNALS");
