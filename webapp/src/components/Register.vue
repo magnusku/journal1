@@ -5,34 +5,36 @@
   </header>
 
   <main>
-    <FileImport @upload-success="getList"/>
+    <FileImport @upload-success="getList" @upload-failed=""/>
 
-    <label>
-      <span>Filter:</span>
-      <input type="text" 
-            v-model="textFilter"/>
-    </label>
-      <table>
-      <thead>
-        <tr>
-          <th>Personal Number</th>
-          <th>First Name</th>
-          <th>Last name</th>
-          <th>Birthday</th>
-          <th>Address</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="record in filteredList" 
-            :key="record.personalnumber">
-          <td>{{ record.personalnumber }}</td>
-          <td>{{ record.firstname }}</td>
-          <td>{{ record.lastname }}</td>
-          <td>{{ record.birthday }}</td>
-          <td>{{ record.address }}</td>
-        </tr>
-      </tbody>
-      </table>
+    <div v-if="filteredList.length > 0">
+      <label>
+        <span>Filter:</span>
+        <input type="text" 
+              v-model="textFilter"/>
+      </label>
+        <table>
+        <thead>
+          <tr>
+            <th>Personal Number</th>
+            <th>First Name</th>
+            <th>Last name</th>
+            <th>Birthday</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="record in filteredList" 
+              :key="record.personalnumber">
+            <td>{{ record.personalnumber }}</td>
+            <td>{{ record.firstname }}</td>
+            <td>{{ record.lastname }}</td>
+            <td>{{ record.birthday }}</td>
+            <td>{{ record.address }}</td>
+          </tr>
+        </tbody>
+        </table>
+      </div>
   </main>
 
 </template>

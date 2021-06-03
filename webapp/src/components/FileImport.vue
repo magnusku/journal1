@@ -9,9 +9,11 @@
 </template>
 
 <script setup>
-import { ref, defineComponent, onMounted } from "vue";
+import { ref, defineComponent, onMounted, defineEmit } from "vue";
 
 const importForm = ref();
+
+const emit = defineEmit(["upload-success", "upload-fail"])
 
 async function submitForm() {
     const formData = new FormData(document.forms.importForm);
@@ -22,12 +24,10 @@ async function submitForm() {
             body: formData
         });
 
-        console.log(response);
-
-        if(response.ok) {
-            alert("Upload successful");
+        if (response.ok) {
+            emit("upload-success");
         } else {
-            alert("Failed to upload");
+            emit("upload-fail");
         }
     } catch(e) {
         console.error(e);
