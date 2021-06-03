@@ -5,14 +5,22 @@
   </header>
 
   <main>
-    <FileImport @upload-success="getList" @upload-failed=""/>
 
-    <div v-if="filteredList.length > 0">
+  <section class="action-panel">
+    <FileImport @upload-success="getList" @upload-failed=""/>
+  </section>
+
+
+    <div class="table-container" v-if="register.length > 0">
+       
+      <form>
       <label>
-        <span>Filter:</span>
-        <input type="text" 
-              v-model="textFilter"/>
-      </label>
+          <span>Filter:</span>
+          <input type="text" 
+                v-model="textFilter"/>
+        </label>
+      </form>
+      
         <table>
         <thead>
           <tr>
@@ -70,11 +78,34 @@ header {
 
 main {
   width: 60vw;
-  margin: 0 auto;
+  margin: 1em auto;
 }
 
 h1 {
   margin: 1em;
   color: white;
+}
+
+.action-panel {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #ddd;
+  border-radius: .3em;
+  padding: 2em;
+  margin: 1em 0;
+}
+
+.table-container {
+  height: 80vh;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+}
+
+tbody tr:nth-child(odd) {
+  background: #ddd;
 }
 </style>

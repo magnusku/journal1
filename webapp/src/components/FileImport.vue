@@ -2,9 +2,7 @@
     <form name="importForm">
         <label for="fileinput"> Select file: </label>
         <input id="fileinput" type="file" name="csvfile"/>
-        <div>
-            <button type="button" @click="submitForm">Import</button>
-        </div>
+        <button type="button" @click="submitForm">Import</button>
     </form>
 </template>
 
@@ -37,9 +35,5 @@ async function submitForm() {
 </script>
 
 <style scoped>
-    form {
-        display: flex;
-        flex-direction: column;
-        padding: 1em;
-    }
+
 </style>
