@@ -72,7 +72,8 @@ CREATE TABLE IF NOT EXISTS registry(
 	firstName VARCHAR(255),
 	lastName VARCHAR(255),
 	birthDay VARCHAR(255),
-	address VARCHAR(255)
+	address VARCHAR(255),
+  changed timestamp with time zone default current_timestamp
 );
 ```
 
