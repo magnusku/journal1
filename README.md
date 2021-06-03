@@ -39,7 +39,7 @@ Demoprojekt för onelab
 - Installera docker
 
 
-Kör kommondot:
+Kör kommandot:
 ```
 docker run --name journal1_db -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -p 5432:5432 -d postgres
 ```
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS registry(
 
 - Öppna upp en terminal där du vill clona projektet från Github och kör:
 ```
-git clone
+git clone https://github.com/magnusku/journal1.git
 cd journal1
 npm install 
 npm run start
