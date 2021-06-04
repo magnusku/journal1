@@ -55,7 +55,7 @@ Kör kommando för att köra postgres cli
  docker exec -it journal1_db psql -U admin
 ```
 
-Skapa databasen journaldb1
+Skapa databasen journal1
 ``` 
 CREATE DATABASE journal1;
 ```
